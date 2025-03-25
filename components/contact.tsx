@@ -1,154 +1,166 @@
 "use client"
 
-import type React from "react"
-
+import React from "react"
 import { motion } from "framer-motion"
-import { MapPin, Phone, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { toast } from "@/hooks/use-toast"
+import { 
+  Target, 
+  Globe, 
+  Rocket, 
+  CheckCircle, 
+  Layers, 
+  Zap, 
+
+} from "lucide-react"
 import SectionTitle from "@/components/section-title"
-import { useRef, useState } from "react"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
-export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const formRef = useRef<HTMLFormElement>(null)
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    toast({
-      title: "Message request submitted",
-      description: "We'll get back to you as soon as possible.",
-    })
-
-    setIsSubmitting(false)
-    formRef.current?.reset()
+export default function AboutUsPage() {
+  const featureVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5 }
   }
 
+  const features = [
+    {
+      icon: Rocket,
+      title: "Innovative Solutions",
+      description: "Cutting-edge digital strategies that drive business growth and transformation."
+    },
+    {
+      icon: CheckCircle,
+      title: "Quality Assured",
+      description: "Rigorous quality control and testing to deliver exceptional digital products."
+    },
+    {
+      icon: Layers,
+      title: "Comprehensive Services",
+      description: "End-to-end digital solutions from concept to implementation and support."
+    },
+    {
+      icon: Zap,
+      title: "Rapid Delivery",
+      description: "Efficient project management ensuring timely and precise project completion."
+    }
+  ]
+
   return (
-    <section className="py-20 bg-muted/30" id="contact">
-      <div className="container">
-        <SectionTitle
-          title="Contact Us"
-          description="Have questions or ready to start your project? Get in touch with our team."
-        />
+    <section className="py-20 bg-gradient-to-b from-muted/10 to-background" id="about"> 
+      <div className="container px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <motion.div 
+          className="text-center max-w-4xl mx-auto mb-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
+          <SectionTitle
+            title="TechMocha: Transforming Digital Landscapes"
+            description="A Top-Rated Digital Agency Delivering Innovative Technology Solutions"
+            className="mb-8"
+          />
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            We are a premier digital agency specializing in creating transformative technology solutions 
+            that empower businesses to thrive in the digital era. With our expert team of developers, 
+            designers, and strategists, we turn innovative ideas into powerful digital experiences.
+          </p>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        {/* Mission and Vision */}
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={featureVariants.initial}
+            whileInView={featureVariants.animate}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={featureVariants.transition}
           >
-            <motion.div
-              className="flex items-start gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-            >
-              <div className="bg-primary/10 p-3 rounded-full">
-                <MapPin className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-1">Our Location</h3>
-                <p className="text-muted-foreground">Suraram colony 4-47, Hyderabad, Telangana</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="flex items-start gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-            >
-              <div className="bg-primary/10 p-3 rounded-full">
-                <Phone className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-1">Phone</h3>
-                <p className="text-muted-foreground">9032323095</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="flex items-start gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-            >
-              <div className="bg-primary/10 p-3 rounded-full">
-                <Mail className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-1">Email</h3>
-                <p className="text-muted-foreground">info@techmocha.in</p>
-              </div>
-            </motion.div>
-
-            <div className="h-[300px] rounded-lg overflow-hidden border">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60889.63496551296!2d78.38294755!3d17.49368445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91b35ca6b0e3%3A0x6a8d4d7c94231f0d!2sSuraram%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1647859045123!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="TechMocha office location"
-              ></iframe>
-            </div>
+            <Card className="h-full border-primary/20 hover:border-primary/50 transition-colors">
+              <CardHeader className="flex flex-row items-center space-y-0 space-x-4 pb-4">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Target className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold">Our Mission</h3>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  To empower businesses through innovative technology solutions, 
+                  delivering exceptional digital experiences that drive growth, 
+                  efficiency, and competitive advantage.
+                </p>
+              </CardContent>
+            </Card>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={featureVariants.initial}
+            whileInView={featureVariants.animate}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={featureVariants.transition}
           >
-            <div className="bg-background rounded-lg border shadow-sm p-6 md:p-8">
-              <h3 className="text-xl font-semibold mb-6">Send us a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="contact-name">Name</Label>
-                  <Input id="contact-name" placeholder="Your name" required />
+            <Card className="h-full border-primary/20 hover:border-primary/50 transition-colors">
+              <CardHeader className="flex flex-row items-center space-y-0 space-x-4 pb-4">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <Globe className="h-6 w-6 text-primary" />
                 </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="contact-email">Email</Label>
-                  <Input id="contact-email" type="email" placeholder="Your email" required />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="contact-subject">Subject</Label>
-                  <Input id="contact-subject" placeholder="Message subject" required />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="contact-message">Message</Label>
-                  <Textarea id="contact-message" placeholder="Your message" className="min-h-[120px]" required />
-                </div>
-
-                <Button type="submit" className="w-full" disabled={isSubmitting}>{isSubmitting ? "Sending..." : "Send Message"}</Button>
-
-              </form>
-            </div>
+                <h3 className="text-xl font-bold">Our Vision</h3>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  To be the leading digital transformation partner, recognized globally 
+                  for our innovative solutions, client-centric approach, and ability to 
+                  turn complex challenges into digital opportunities.
+                </p>
+              </CardContent>
+            </Card>
           </motion.div>
+        </div>
+
+
+        {/* Key Features */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold mb-4">Why Choose TechMocha</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            We combine technical expertise with creative thinking to deliver solutions that make an impact
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={featureVariants.initial}
+              whileInView={featureVariants.animate}
+              viewport={{ once: true }}
+              transition={{ ...featureVariants.transition, delay: index * 0.1 }}
+            >
+              <Card className="h-full hover:shadow-lg transition-shadow">
+                <CardContent className="p-8 text-center">
+                  <div className="bg-primary/10 p-4 rounded-full inline-flex items-center justify-center mb-6">
+                    <feature.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h4 className="text-lg font-semibold mb-3">{feature.title}</h4>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-20 text-center">
+          <h3 className="text-2xl font-bold mb-4">Ready to transform your digital presence?</h3>
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Let's discuss how we can help you achieve your business goals with our tailored solutions.
+          </p>
+          <Button size="lg" className="px-8">
+            
+            <Link href="#quote">Contact Us Today</Link>
+
+          </Button>
         </div>
       </div>
     </section>
   )
 }
-

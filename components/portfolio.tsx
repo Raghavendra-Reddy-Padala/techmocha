@@ -85,7 +85,7 @@ export default function Portfolio() {
               <Button
                 variant={isCardView ? "default" : "ghost"}
                 size="sm"
-                className={`rounded-full ${isCardView ? "bg-gradient-to-r from-red-500 to-blue-500" : ""}`}
+                className={`rounded-full ${isCardView ? "bg-red-500" : ""}`}
                 onClick={() => setIsCardView(true)}
               >
                 Cards
@@ -93,7 +93,7 @@ export default function Portfolio() {
               <Button
                 variant={!isCardView ? "default" : "ghost"}
                 size="sm"
-                className={`rounded-full ${!isCardView ? "bg-gradient-to-r from-red-500 to-blue-500" : ""}`}
+                className={`rounded-full ${!isCardView ? "bg-red-500" : ""}`}
                 onClick={() => setIsCardView(false)}
               >
                 Grid

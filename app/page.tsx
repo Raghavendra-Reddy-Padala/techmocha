@@ -22,12 +22,12 @@ export default function Home() {
         <Header />
         <main>
           <Hero />
+          <Contact />
           <Services />
           <Approach />
           <Portfolio />
           <Metrics />
           <QuoteForm />
-          <Contact />
         </main>
         <Footer />
       </PageTransition>

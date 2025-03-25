@@ -45,10 +45,10 @@ export default function Header() {
 
   const navItems = [
     { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Approach", href: "#approach" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Contact", href: "#contact" },
   ]
 
   const scrollToSection = (sectionId: string) => {
@@ -83,12 +83,12 @@ export default function Header() {
           }}
         >
           <motion.div
-            className="relative w-10 h-10 flex items-center justify-center bg-gradient-to-r from-red-500 to-blue-500 rounded-full overflow-hidden transition-transform group-hover:scale-110"
+            className="relative w-10 h-10 flex items-center justify-center bg-primary rounded-full overflow-hidden transition-transform group-hover:scale-110"
             whileHover={{ rotate: 10 }}
             whileTap={{ scale: 0.9 }}
           >
             <div className="text-white font-mono font-bold text-sm">&lt;/&gt;</div>
-            <motion.div className="absolute inset-0 flex items-center justify-center bg-gradient-to-r from-blue-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <motion.div className="absolute inset-0 flex items-center justify-center bg-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="text-white font-mono font-bold text-sm">&lt;TM&gt;</div>
             </motion.div>
           </motion.div>
@@ -101,7 +101,7 @@ export default function Header() {
             transition={{ duration: 0.3 }}
           >
             <span className="font-mono tracking-tight">
-              <span className="text-red-500 relative z-10">Tech</span>
+              <span className="text-primary relative z-10">Tech</span>
               <span className="text-blue-500 relative z-10">Mocha</span>
             </span>
           </motion.div>
@@ -127,7 +127,7 @@ export default function Header() {
         </nav>
 
         <Button
-          className="bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600"
+          className="bg-primary text-white hover:bg-primary/90"
           onClick={() => scrollToSection("#quote")}
         >
           Get a Quote

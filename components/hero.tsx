@@ -40,8 +40,9 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Brewing <span className="text-primary">Tech Solutions</span> for Your{" "}
-              <span className="text-blue-500">Business</span>
+              Your Vision, Our <span className="text-primary">Code, </span>{" "}
+              tomorrow's 
+              <span className="text-blue-500"> reality</span>
             </motion.h1>
 
             <motion.p
@@ -64,7 +65,7 @@ export default function Hero() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90"
+                  className="bg-primary text-white hover:bg-primary/90"
                 >
                   <Link href="#services">Explore Services</Link>
                 </Button>
@@ -74,9 +75,9 @@ export default function Hero() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-blue-500 text-primary hover:bg-blue-500/10"
+                  className="border-primary text-primary hover:bg-primary/10"
                 >
-                  <Link href="#contact">Contact Us</Link>
+                  <Link href="#services">Services</Link>
                 </Button>
               </motion.div>
             </motion.div>
@@ -151,4 +152,3 @@ export default function Hero() {
     </section>
   )
 }
-

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Home, Layers, Briefcase, Phone, Settings, X, Zap } from "lucide-react"
+import { Home, Layers, Briefcase, InfoIcon, Settings, X, Zap } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { useMobile } from "@/hooks/use-mobile"
@@ -19,9 +19,9 @@ export default function FuturisticMobileNav() {
 
   const navItems = [
     { name: "Home", href: "#home", icon: Home, color: "text-red-500", bg: "bg-red-500/10" },
+    { name: "About", href: "#about", icon: InfoIcon, color: "text-red-500", bg: "bg-red-500/10" },
     { name: "Services", href: "#services", icon: Layers, color: "text-red-500", bg: "bg-red-500/10" },
     { name: "Portfolio", href: "#portfolio", icon: Briefcase, color: "text-red-500", bg: "bg-red-500/10" },
-    { name: "Contact", href: "#contact", icon: Phone, color: "text-red-500", bg: "bg-red-500/10" },
     { name: "Quote", href: "#quote", icon: Settings, color: "text-red-500", bg: "bg-red-500/10" },
   ]
 
